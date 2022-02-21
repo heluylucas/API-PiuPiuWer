@@ -33,8 +33,10 @@ export default class PiusController {
 
   public async delete (request: Request, response: Response): Promise<Response> {
     const { piu_id } = request.body
+    const user_id = request.user.id;
+
     const deletePiusService = container.resolve(DeletePiuService)
-    await deletePiusService.execute({piu_id});
+    await deletePiusService.execute({piu_id: piu_id, user_id: user_id});
 
     return response.json({deleted: true});
   }
