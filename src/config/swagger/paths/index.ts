@@ -1,7 +1,9 @@
-import exemplePaths from './example';
+import usersPaths from './users';
+import piusPaths from './pius'
 
 const paths = {
-  ...exemplePaths,
+  ...piusPaths,
+  ...usersPaths,
 };
 
 export default paths;
