@@ -15,6 +15,8 @@ import swaggerDocs from '@config/swagger';
 
 import routes from './routes';
 
+import '@shared/container';
+
 const app = express();
 
 app.use(cors());
@@ -24,10 +26,6 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(express.json());
 
 app.use(routes);
-
-app.get('/teste', (req: Request, res: Response) => {
-  res.json({ message: 'Hello World' });
-});
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppError) {
