@@ -30,8 +30,10 @@ class FollowUserService {
     if (userAlreadyFollowed !== -1) throw new AppError('User already followed');
 
     follower.following.push(user);
+    user.followers.push(follower)
 
     await this.usersRepository.save(follower);
+    await this.usersRepository.save(user);
 
     return { operation: 'followed' };
   }
